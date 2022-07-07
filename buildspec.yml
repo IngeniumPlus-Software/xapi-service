@@ -13,7 +13,6 @@ phases:
   build:
     commands:
       - yarn build
-      - yarn migrate
   post_build:
     commands:
       - echo PWD
