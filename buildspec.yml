@@ -12,7 +12,7 @@ phases:
       - npm_config_build_from_source=true yarn install --ignore-engines
   build:
     commands:
-      - yarn build-all
+      - yarn build
       - yarn migrate
   post_build:
     commands:
