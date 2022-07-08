@@ -11,4 +11,4 @@ nvm install 10
 npm install -g yarn
 npm install -g pm2
 cd /var/www/learning-locker-latest
-pm2 stop pm2/xapi.json
+#pm2 stop pm2/xapi.json
