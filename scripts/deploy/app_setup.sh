@@ -5,9 +5,9 @@ set -e
 cd /var/www/learning-locker-latest
 
 unzip output.zip -d /var/www/learning-locker-latest/
-
+chown nodejs -R /var/www/learning-locker-latest/
 #run this as nodejs
-su nodejs
+sudo su nodejs
 cd ~
 . ~/.nvm/nvm.sh
 
