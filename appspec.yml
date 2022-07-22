@@ -7,7 +7,7 @@ files:
 hooks:
   ApplicationStop:
     - location: scripts/deploy/stop_pm2.sh
-      timeout: 30
+      timeout: 60
       runas: nodejs
     - location: scripts/deploy/stop_nginx.sh
       timeout: 30
@@ -22,7 +22,7 @@ hooks:
       runas: root
   ApplicationStart:
     - location: scripts/deploy/start_pm2.sh
-      timeout: 30
+      timeout: 120
       runas: nodejs
     - location: scripts/deploy/start_nginx.sh
       timeout: 30
