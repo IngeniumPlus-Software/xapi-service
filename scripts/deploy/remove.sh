@@ -2,4 +2,5 @@
 
 set -e
 
-rm -rf /var/www/learning-locker-latest/
+cd /var/www/learning-locker-latest
+rm -f !(".env")
