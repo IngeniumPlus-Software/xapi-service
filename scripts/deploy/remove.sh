@@ -3,7 +3,7 @@
 set -e
 if [[ -d "/var/www/learning-locker-latest" ]]; then
   cd /var/www/learning-locker-latest
-  shopt -s extglob
-  rm -fr !(".env")
-  shopt -u extglob
+  cp .env ~/.env
+  rm -Rf /var/www/learning-locker-latest
+  mv ~.env .env
 fi
