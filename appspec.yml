@@ -1,0 +1,29 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/learning-locker-latest
+hooks:
+  ApplicationStop:
+    - location: scripts/deploy/stop_pm2.sh
+      timeout: 60
+      runas: nodejs
+    - location: scripts/deploy/stop_nginx.sh
+      timeout: 30
+      runas: root
+  BeforeInstall:
+    - location: scripts/deploy/remove.sh
+      timeout: 60
+      runas: root
+  AfterInstall:
+    - location: scripts/deploy/app_setup.sh
+      timeout: 120
+      runas: root
+  ApplicationStart:
+    - location: scripts/deploy/start_pm2.sh
+      timeout: 120
+      runas: nodejs
+    - location: scripts/deploy/start_nginx.sh
+      timeout: 30
+      runas: root

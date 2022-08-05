@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - echo PWD
+      - pwd
+      - echo Install dependencies node modules with yarn.
+      - npm_config_build_from_source=true yarn install --ignore-engines
+  build:
+    commands:
+      - yarn build
+  post_build:
+    commands:
+      - echo PWD
+      - pwd
+      - zip -r output.zip * -x scripts/**\* *.yml .env
+artifacts:
+  files:
+    - output.zip
+    - .env
+    - appspec.yml
+    - scripts/**/*
+    - config/**/*
