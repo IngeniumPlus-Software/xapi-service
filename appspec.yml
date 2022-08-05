@@ -25,5 +25,5 @@ hooks:
       timeout: 120
       runas: nodejs
     - location: scripts/deploy/start_nginx.sh
-      timeout: 30
+      timeout: 60
       runas: root
