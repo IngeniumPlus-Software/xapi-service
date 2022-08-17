@@ -9,6 +9,7 @@ import config from './config';
 import logger from './logger';
 import connectToMongoDb from './utils/connectToMongoDb';
 import connectToRedis from './utils/connectToRedis';
+import cors from 'cors';
 
 const expressApp = express();
 
@@ -41,6 +42,11 @@ expressApp.use(
     tracker,
   }),
 );
+
+const corsMiddleware = cors({ origin: '*', preflightContinue: true });
+const app = express();
+app.use(corsMiddleware);
+app.options('*', corsMiddleware);
 
 expressApp.listen(config.express.port, () => {
   const port80 = 80;
