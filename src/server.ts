@@ -12,7 +12,9 @@ import connectToRedis from './utils/connectToRedis';
 import cors from 'cors';
 
 const expressApp = express();
-
+const corsMiddleware = cors({ origin: '*', preflightContinue: true });
+expressApp.use(corsMiddleware);
+expressApp.options('*', corsMiddleware);
 expressApp.use(
   app({
     logger,
@@ -43,10 +45,7 @@ expressApp.use(
   }),
 );
 
-const corsMiddleware = cors({ origin: '*', preflightContinue: true });
-const app = express();
-app.use(corsMiddleware);
-app.options('*', corsMiddleware);
+
 
 expressApp.listen(config.express.port, () => {
   const port80 = 80;
