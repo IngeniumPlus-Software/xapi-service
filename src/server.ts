@@ -1,6 +1,7 @@
 import * as sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
 
+import cors from 'cors';
 import tracker from './tracker'; // eslint-disable-line import/order
 import express from 'express';
 import handleListen from 'jscommons/dist/expressPresenter/utils/handleListen';
@@ -11,7 +12,9 @@ import connectToMongoDb from './utils/connectToMongoDb';
 import connectToRedis from './utils/connectToRedis';
 
 const expressApp = express();
-
+const corsMiddleware = cors({ origin: '*', preflightContinue: true });
+expressApp.use(corsMiddleware);
+expressApp.options('*', corsMiddleware);
 expressApp.use(
   app({
     logger,
